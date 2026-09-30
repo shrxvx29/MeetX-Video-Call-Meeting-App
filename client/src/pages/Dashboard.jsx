@@ -9,9 +9,10 @@ import React, { useEffect, useState } from "react";
 import { dummyStats, dummyUser } from "../assets/asset";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useUser } from "@clerk/react";
 
 const Dashboard = () => {
-  const user = dummyUser;
+  const {user} = useUser();
   const username = user?.fullName || "User";
   const userEmail =
     user?.primaryEmailAddress?.emailAddress || "No email";
@@ -84,15 +85,15 @@ const Dashboard = () => {
         <div className="lg:col-span-7 space-y-8">
           <div className="space-y-5">
 
-            <div className="inline-flex items-center gap-2 px-3.5 pr-5 py-2 rounded-full bg-pink-50 border border-pink-100 text-xs font-medium text-slate-700">
-              <ShieldCheckIcon size={16} className="text-pink-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 pr-5 py-2 rounded-full bg-primary/5 border border-primary/15 text-xs font-medium text-slate-700">
+              <ShieldCheckIcon size={16} className="text-primary" />
               Secure End-to-End Encryption
             </div>
 
             <h1 className="text-4xl sm:text-5xl text-slate-800 leading-tight font-semibold tracking-tight">
               High Quality Video Calls
               <br />
-              <span className="text-pink-600">
+              <span className="text-primary">
                 Built For Everyone.
               </span>
             </h1>
@@ -108,7 +109,7 @@ const Dashboard = () => {
               <button
                 onClick={handleCreateMeeting}
                 disabled={isCreating}
-                className="bg-pink-600 hover:bg-pink-700 text-white font-medium px-6 py-3.5 rounded-full shadow-md shadow-pink-200 flex items-center justify-center gap-2.5 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-primary hover:bg-primary-hover text-white font-medium px-6 py-3.5 rounded-full shadow-md shadow-primary/20 flex items-center justify-center gap-2.5 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <PlusIcon className="w-5 h-5" />
                 <span>
@@ -121,7 +122,7 @@ const Dashboard = () => {
                 className="flex-1 flex items-center gap-3 min-w-0"
               >
                 <div className="relative flex-1 min-w-0">
-                  <KeyboardIcon className="w-5 h-5 text-pink-500 absolute left-4 top-1/2 -translate-y-1/2" />
+                  <KeyboardIcon className="w-5 h-5 text-primary absolute left-4 top-1/2 -translate-y-1/2" />
 
                   <input
                     type="text"
@@ -130,7 +131,7 @@ const Dashboard = () => {
                     onChange={(e) => setJoinId(e.target.value)}
                     maxLength={11}
                     autoComplete="off"
-                    className="w-full bg-white/80 border border-pink-100 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 rounded-full pl-12 pr-4 py-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none transition-all"
+                    className="w-full bg-white/80 border border-primary/15 focus:border-primary/50 focus:ring-2 focus:ring-primary/10 rounded-full pl-12 pr-4 py-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none transition-all"
                   />
                 </div>
 
@@ -150,7 +151,7 @@ const Dashboard = () => {
         {/* Right Column - Clock & Stats Card */}
         <div className="lg:col-span-5 flex flex-col items-center justify-center space-y-4">
 
-          <div className="w-full bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-pink-100 shadow-lg shadow-pink-100/40 text-center space-y-6 relative overflow-hidden">
+          <div className="w-full bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-primary/15 shadow-lg shadow-primary/5 text-center space-y-6 relative overflow-hidden">
 
             <div className="space-y-1">
               <p className="mb-5 text-xl text-left font-medium text-slate-800">
@@ -165,7 +166,7 @@ const Dashboard = () => {
                 })}
               </h2>
 
-              <p className="font-medium tracking-wide text-pink-600 pt-2">
+              <p className="font-medium tracking-wide text-primary pt-2">
                 {currentTime.toLocaleDateString(undefined, {
                   weekday: "long",
                   month: "short",
@@ -175,7 +176,7 @@ const Dashboard = () => {
               </p>
             </div>
 
-            <div className="pt-4 border-t border-pink-100 text-sm text-slate-600">
+            <div className="pt-4 border-t border-primary/15 text-sm text-slate-600">
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 py-5">
                 <div className="text-left min-w-0">
@@ -190,7 +191,7 @@ const Dashboard = () => {
                 <span
                   className={`px-4 py-1.5 rounded-full font-semibold text-xs uppercase shrink-0 ${
                     stats?.plan?.toLowerCase() === "premium"
-                      ? "bg-pink-700 text-white"
+                      ? "bg-primary-hover text-white"
                       : "bg-slate-100 text-slate-700"
                   }`}
                 >
@@ -199,7 +200,7 @@ const Dashboard = () => {
               </div>
 
               {stats && (
-                <div className="w-full bg-white/80 rounded-2xl p-5 border border-pink-100 text-left">
+                <div className="w-full bg-white/80 rounded-2xl p-5 border border-primary/15 text-left">
 
                   <div className="flex items-center justify-between gap-3 mb-3">
                     <span className="text-sm font-medium text-slate-700">
@@ -215,9 +216,9 @@ const Dashboard = () => {
 
                   {monthlyLimit > 0 && (
                     <>
-                      <div className="w-full h-2 bg-pink-100 rounded-full overflow-hidden">
+                      <div className="w-full h-2 bg-primary/10 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-pink-500 rounded-full transition-all duration-300"
+                          className="h-full bg-primary rounded-full transition-all duration-300"
                           style={{ width: `${usagePercentage}%` }}
                         />
                       </div>

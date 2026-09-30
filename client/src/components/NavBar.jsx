@@ -7,13 +7,10 @@ import {
   HistoryIcon,
   LayoutDashboardIcon,
 } from "lucide-react";
-import { UserButton } from "@clerk/react";
+import { UserButton, useUser } from "@clerk/react";
 
 const NavBar = () => {
-  const { isSignedIn, user } = {
-    user: dummyUser,
-    isSignedIn: true,
-  };
+  const { isSignedIn, user } = useUser()
 
   const location = useLocation();
 
@@ -26,7 +23,7 @@ const NavBar = () => {
     `whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-medium
     transition-all flex items-center gap-1.5 ${
       location.pathname === path
-        ? "ring-1 ring-pink-100 bg-pink-50 text-slate-800"
+        ? "ring-1 ring-primary/15 bg-primary/5 text-slate-800"
         : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
     }`;
 
@@ -47,7 +44,7 @@ const NavBar = () => {
           />
 
           <span className="flex items-center text-xl font-medium tracking-tight text-slate-900 sm:text-2xl">
-            MeetX<span className="text-pink-600">.</span>
+            MeetX<span className="text-primary">.</span>
           </span>
         </Link>
 
@@ -91,7 +88,7 @@ const NavBar = () => {
               aria-label="Dashboard"
               className={`flex h-9 w-9 items-center justify-center rounded-full transition-all sm:h-10 sm:w-10 ${
                 location.pathname === "/dashboard"
-                  ? "bg-pink-50 text-pink-600 ring-1 ring-pink-100"
+                  ? "bg-primary/5 text-primary ring-1 ring-primary/15"
                   : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >
@@ -103,7 +100,7 @@ const NavBar = () => {
               aria-label="Sessions"
               className={`flex h-9 w-9 items-center justify-center rounded-full transition-all sm:h-10 sm:w-10 ${
                 location.pathname === "/sessions"
-                  ? "bg-pink-50 text-pink-600 ring-1 ring-pink-100"
+                  ? "bg-primary/5 text-primary ring-1 ring-primary/15"
                   : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >
@@ -115,7 +112,7 @@ const NavBar = () => {
               aria-label="Pricing"
               className={`flex h-9 w-9 items-center justify-center rounded-full transition-all sm:h-10 sm:w-10 ${
                 location.pathname === "/pricing"
-                  ? "bg-pink-50 text-pink-600 ring-1 ring-pink-100"
+                  ? "bg-primary/5 text-primary ring-1 ring-primary/15"
                   : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >

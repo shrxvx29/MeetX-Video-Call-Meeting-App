@@ -2,10 +2,10 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #004cff;
-    --color-primary-hover: #0033ad;
-    --color-primary-light: #d9e4ff;
-    --color-primary-border: #7a9cff;
+    --color-primary: #7c3aed;
+    --color-primary-hover: #6d28d9;
+    --color-primary-light: #ede9fe;
+    --color-primary-border: #c4b5fd;
 }
 @layer base {
     * {

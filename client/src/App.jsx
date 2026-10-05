@@ -17,13 +17,13 @@ const App = () => {
         <Route path="/login" element={<Login mode="login" />} />
         <Route path="/register" element={<Login mode="register" />} />
 
-        {/* <Route element={<ProtectedRoute />}> */}
+        <Route element={<ProtectedRoute />}>
           <Route element={<ProtectedLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/sessions" element={<Sessions />} />
             <Route path="/pricing" element={<Pricing />} />
           </Route>
-        {/* </Route> */}
+        </Route>
 
         <Route path="/meeting/:meetingId" element={<MeetingRoom />} />
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
